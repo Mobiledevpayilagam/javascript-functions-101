@@ -88,6 +88,78 @@ waitForPromiseWithReject()
     console.log(e);
   });
 
+//Recursive functions
+
+const factorial = (n) => {
+  if (n <= 1) {
+    console.log(1);
+    return 1;
+  }
+  return n * factorial(n - 1);
+};
+
+console.log(factorial(5));
+
 //Callback functions
+const callback = (takesAName) => {
+  console.log("callback function" + takesAName);
+};
+
+const aFunctionWithCallbackAsParameter = (justACallbackFunction, name) => {
+  justACallbackFunction(name);
+};
+
+aFunctionWithCallbackAsParameter(callback, "John");
 //Lambda functions
-//Closure
+//Closure functions
+
+const returnANumber = (number) => {
+  return number;
+};
+
+const returnAnotherNumber = (number) => {
+  return number;
+};
+
+const a = returnANumber(20);
+const b = returnAnotherNumber(35);
+
+console.log(a + b);
+
+const refactoredReturnANumber = () => {
+  const number = 223;
+  return (anotherNumber) => {
+    return number * anotherNumber;
+  };
+};
+
+const multiplier = refactoredReturnANumber();
+const multiplicand = multiplier(34);
+console.log(multiplicand);
+//Curried functions
+
+// const addNumbers = (a) => (b) => {
+//   return a+ b;
+// };
+
+function addNumbers() {
+  return function anonymous(b) {
+    return 2323 + b;
+  };
+}
+
+const c = addNumbers();
+const result = c(12123);
+console.log("result", result, c(2343432));
+//Call, Apply and Bind
+//Function returning multiple values
+const functionReturningMultipleValues = () => {
+  return {
+    name: "John",
+    age: 23,
+    email: "john@doe.com",
+  };
+};
+
+const multipleValues = functionReturningMultipleValues();
+console.log(multipleValues.name, multipleValues.age, multipleValues.email);
